@@ -15,7 +15,6 @@ module QuotaHandler
   end
 
   def hits_count
-    count = Rails.cache.read("#{current_user.id}_hits_count")
-    @hits_count ||= count.nil? ? 1 : count + 1
+    @hits_count ||= current_user.count_hits == 0 ? 1 : count + 1
   end
 end
