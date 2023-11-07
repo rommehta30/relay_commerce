@@ -11,8 +11,8 @@ Make changes to the code provided so that the API response time is back to accep
 
 ### Solution
 
-Using redis cache to store hits count per user. That will avoid quering hits table for each request.
-Quering hits table will be an expensive task because hits table will grow rapidly.
+Using Redis cache to store hits count per user. That will avoid querying the hits table for each request.
+Querying the hits table will be an expensive task because the hits table will grow rapidly.
 
 
 ## #2
@@ -25,7 +25,7 @@ Describe the root cause of the issue and provide a fix for it.
 
 ### Solution
 
-The issue is because of timezone. 
+The issue is because of the timezone. 
 While fetching the hits count, we are doing `Time.now.beginning_of_month` and `created_at` in the `hits` table is in UTC.
 So, to fix this we can do `Time.current.beginning_of_month`. That is why for setting the cache expiry, we are doing `Time.current.end_of_month`.
 
@@ -41,9 +41,9 @@ Describe how can that be possible and provide a fix for it.
 ### Solution
 
 I can think of 2 possible reasons:
-1. Timezone: If the user is in GMT - HOURS timezone. This should get fixed because now we are using UTC time for comparision.
+1. Timezone: The user is in GMT - HOURS timezone. This should get fixed because now we are using UTC time for comparison.
 2. An edge case would be "multiple requests have come in at the same time and the existing hits are not committed into the DB yet".
-Redis cache should solve the issue because we are not quering DB for checking quota.
+Redis cache should solve the issue because we are not querying DB for checking quota.
 
 
 ## #4
