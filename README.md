@@ -40,8 +40,10 @@ Describe how can that be possible and provide a fix for it.
 
 ### Solution
 
-This can be because multiple requests have come in at the same time and the existing hits are not committed into the DB yet.
-Using the redis cache should solve the issue because we are not quering DB for checking quota.
+I can think of 2 possible reasons:
+1. Timezone: If the user is in GMT - HOURS timezone. This should get fixed because now we are using UTC time for comparision.
+2. An edge case would be "multiple requests have come in at the same time and the existing hits are not committed into the DB yet".
+Redis cache should solve the issue because we are not quering DB for checking quota.
 
 
 ## #4
