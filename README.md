@@ -57,8 +57,8 @@ Make changes to the code so it matches Acme's new code quality standards.
 
 ### Solution
 
-> Using the cache makes the code simple & clean.
-> I have moved the code into individual concerns.
-> Added basic spec folder to show how specs will look.
-> Added I18n to move strings into yml.
-> Further controller specs cleanup can be done by creating request specs.
+1. Using the cache makes the code simple & clean.
+2. I have moved the code into individual concerns.
+3. Added basic spec folder to show how specs will look.
+4. Added I18n to move strings into yml.
+5. Further controller specs cleanup can be done by creating request specs.
