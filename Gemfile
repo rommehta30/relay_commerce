@@ -1,0 +1,19 @@
+...
+gem "redis"
+gem "rails-i18n"
+
+group :development, :test do
+  ...
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  ...
+end
+
+group :test do
+  ...
+  gem 'shoulda-matchers'
+  ...
+end
+...
